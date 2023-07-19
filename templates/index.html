@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="tempcloud, temp, cloud, temporary, kotol, file, files, storage, share, send, big, transfer">
+		<meta name="description" content="Tempcloud lets you share all files of size up to 10 GB with 100% of media quality kept.">
+		<title>Tempcloud</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../static/css/style.css">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+		<link rel="manifest" href="/favicon/site.webmanifest">
+		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#b69ee2">
+		
+		<script src="../static/js/scroll.js" defer></script>
+		<script src="../static/js/scale.js" defer></script>
+		<script src="../static/js/checkbox.js" defer></script>
+		<script src="../static/js/upload.js" defer></script>
+		<script src="../static/js/download.js" defer></script>
+
+		<style>
+
+			.dialog-box{
+				position: fixed;
+				color: white;
+				min-width: fit-content;
+				max-width: 100%;
+				height: auto;
+				bottom:3rem;
+				left: 50%;
+				border: 1px solid transparent;
+				border-radius: 0.5rem;
+				opacity: 0;
+				white-space: nowrap;
+				background:white;
+			}
+		
+			.error-handling{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.error-icon{
+				margin-left: 10px;
+				padding-right: 10px;
+			}
+
+			#error-txt{
+				font-family: "Nunito";
+				padding-right:20px;
+				color:#D72828;
+				font-size:30px;
+				font-style: normal;
+				font-weight: 700;
+				filter: inherit;
+				margin: 0;
+				
+			}
+			
+			#error-box.shown{
+				opacity: 1;
+			}
+			#error-box.up{
+				transform: translate(-50%, 0px);
+			}
+			
+		</style>
+
+	</head>
+
+	<body>
+		
+		<svg id="backgroundEffect" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin" viewBox="0 0 1920 969">
+			<g>
+				<linearGradient id="lgcolor" x1="0" x2="1" y1="0" y2="0">
+					<stop stop-color="#ff97ff" offset="0"></stop>
+					<stop stop-color="#42ffff" offset="1"></stop>
+				</linearGradient>
+				
+				<path d="" fill="url(#lgcolor)" opacity="0.35">
+					<animate
+					attributeName="d"
+					dur="36s"
+					repeatCount="indefinite"
+					keyTimes="0; 0.333; 0.667; 1"
+					keySplines="0.2 0 0.2 1; 0.2 0 0.2 1; 0.2 0 0.2 1"
+					begin="0s"
+					values="
+					M 0 0  L 0 918  Q 290 578  613 511  T 1212 313  T 1700 0  Z;
+					M 0 0  L 0 896  Q 300 592  598 506  T 1200 332  T 1674 0  Z;
+					M 0 0  L 0 880  Q 310 613  583 496  T 1193 341  T 1721 0  Z;
+					M 0 0  L 0 918  Q 290 578  613 511  T 1212 313  T 1700 0  Z"
+					></animate>
+				</path>
+
+				<path d="" fill="url(#lgcolor)" opacity="0.35">
+					<animate
+					attributeName="d"
+					dur="39s"
+					repeatCount="indefinite"
+					keyTimes="0; 0.333; 0.667; 1"
+					keySplines="0.2 0 0.2 1; 0.2 0 0.2 1; 0.2 0 0.2 1"
+					begin="0s"
+					values="
+					M 0 0  L 0 888  Q 309 618  591 513  T 1191 351  T 1675 0  Z;
+					M 0 0  L 0 871  Q 297 587  598 526  T 1200 339  T 1679 0  Z;
+					M 0 0  L 0 879  Q 300 601  604 500  T 1209 326  T 1669 0  Z;
+					M 0 0  L 0 888  Q 309 618  591 513  T 1191 351  T 1675 0  Z"
+					></animate>
+				</path>
+
+				<path d="" fill="url(#lgcolor)" opacity="0.35">
+					<animate
+					attributeName="d"
+					dur="35s"
+					repeatCount="indefinite"
+					keyTimes="0; 0.333; 0.667; 1"
+					keySplines="0.2 0 0.2 1; 0.2 0 0.2 1; 0.2 0 0.2 1"
+					begin="0s"
+					values="
+					M 0 0  L 0 904  Q 293 618  588 513  T 1200 327  T 1645 0  Z;
+					M 0 0  L 0 891  Q 299 631  606 510  T 1206 340  T 1656 0  Z;
+					M 0 0  L 0 884  Q 304 607  598 500  T 1190 319  T 1650 0  Z;
+					M 0 0  L 0 904  Q 293 618  588 513  T 1200 327  T 1645 0  Z"
+					></animate>
+				</path>
+
+				<path d="" fill="url(#lgcolor)" opacity="0.35">
+					<animate
+					attributeName="d"
+					dur="34s"
+					repeatCount="indefinite"
+					keyTimes="0; 0.333; 0.667; 1"
+					keySplines="0.2 0 0.2 1; 0.2 0 0.2 1; 0.2 0 0.2 1"
+					begin="0s"
+					values="
+					M 0 0  L 0 871  Q 294 580  598 515  T 1190 327  T 1625 0  Z;
+					M 0 0  L 0 859  Q 299 699  606 529  T 1206 344  T 1611 0  Z;
+					M 0 0  L 0 890  Q 306 557  588 495  T 1198 312  T 1620 0  Z;
+					M 0 0  L 0 871  Q 294 580  598 515  T 1190 327  T 1625 0  Z"
+					></animate>
+				</path>
+
+				<path d="" fill="url(#lgcolor)" opacity="0.35">
+					<animate
+					attributeName="d"
+					dur="37s"
+					repeatCount="indefinite"
+					keyTimes="0; 0.333; 0.667; 1"
+					keySplines="0.2 0 0.2 1; 0.2 0 0.2 1; 0.2 0 0.2 1"
+					begin="0s"
+					values="
+					M 0 0  L 0 860  Q 294 621  606 500  T 1210 337  T 1607 0  Z;
+					M 0 0  L 0 839  Q 299 600  598 513  T 1175 349  T 1628 0  Z;
+					M 0 0  L 0 851  Q 306 582  588 526  T 1193 315  T 1594 0  Z;
+					M 0 0  L 0 860  Q 294 621  606 500  T 1210 337  T 1607 0  Z"
+					></animate>
+				</path>
+			</g>
+		</svg>
+		
+		<div id="title">
+			TEMPCLOUD
+			<img id="cloud" src="newcloud.png" alt="">
+		</div>
+
+		<div id="tutorial">			
+			<h1 id="howItWorks" class="titles">HOW IT WORKS</h1>
+			<p id="tutorialText">
+				Upload a file, you'll get a code.
+				<br>Then you can use that code wherever you want
+				<br class="notNew">to download the file. Just type it into the download box.
+				<br>Click on a given code to copy a link with your code pre-filled to clipboard.
+				<br>All files are deleted automatically after the chosen time limit.
+				<br>Running downloads will be finished also after the time limit.
+				<br>File size limit is 10 GiB per file.
+			</p>
+		</div>
+
+		<div id="spacer"></div>
+
+		<div id="arrowContainer">
+			<img id="arrow1" src="arrow_down_tempcloud.png" alt="">
+			<img id="arrow2" src="arrow_down_tempcloud.png" alt="">
+			<img id="arrow3" src="arrow_down_tempcloud.png" alt="">
+		</div>
+
+		<div id="upDown">
+			<div id="upload">
+				<h1 id="uploadTitle" class="titles">UPLOAD</h1>
+
+				<div id="uploadBox">
+					<div id="dragFiles">Drag files to the website<br>or click here</div>
+				</div>
+
+				<div id="sameCode">
+					<div id="groupFilesCheckbox" class="checkbox"></div>
+					<div id="groupFilesText">Group files to a single code&nbsp;</div>
+					<div id="newGroup">(new group)</div>
+				</div>
+				
+
+				<div class="radioWrap" id="timeRadios">
+					<div class="radios selected" id="15min" data-val="900000">15 min</div>
+					<div class="radios" id="1h" data-val="3600000">1 hr</div>
+					<div class="radios" id="6h" data-val="21600000">6 hrs</div>
+					<div class="radios" id="1d" data-val="86400000">1 day</div>
+					<div class="radios" id="3d" data-val="259200000">3 days</div>
+				</div>
+			</div>
+
+			<div id="codes">
+				<h1 id="codesTitle" class="titles">CODES</h1>
+
+				<div id="codesTable">
+					<div id="nowUploadingWrap">
+						<span>Currently uploading (<span id="queueCount">0</span> more in queue): </span>
+						<span id="nowUploading">Waiting for file...</span>
+						<div id="uploadProgress">
+							<div id="uploadProgressInner"></div>
+							<div id="uploadProgressText">Idle</div>
+						</div>
+					</div>
+					
+					<div id="table">
+
+					</div>
+				</div>
+			</div>
+
+			<div id="download">
+				<h1 id="downloadTitle" class="titles">DOWNLOAD</h1>
+
+				<div id="codeInput">
+					<input type="text" class="codeLetter" maxlength="1">
+					<input type="text" class="codeLetter" maxlength="1">
+					<input type="text" class="codeLetter" maxlength="1">
+					<input type="text" class="codeLetter" maxlength="1">
+				</div>
+
+				<div id="fileStats">
+					<div id="fileName" class="stat">Name: <span id="fileNameContent"></span></div>
+					<div id="fileSize" class="stat">Size: <span id="fileSizeContent"></span></div>
+					<div id="fileExpiresIn" class="stat">Expires in: <span id="fileExpiresInContent"></span></div>
+				</div>
+
+				<a id="downloadButton" class="disabled" href="javascript:void(0)">DOWNLOAD</a>
+			</div>
+		</div>
+		<div class="dialog-box" id="error-box">
+			<div class="error-handling">
+				<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.0//EN'  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'><svg height="64" class="error-icon" style="overflow:visible;enable-background:new 0 0 32 32" viewBox="0 0 32 32" width="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g id="Error_1_"><g id="Error"><circle cx="16" cy="16" id="BG" r="16" style="fill:#D72828;"/><path d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z" id="Exclamatory_x5F_Sign" style="fill:#E6E6E6;"/></g></g></g></svg>
+				<label id="error-txt"></label>
+			</div>
+		</div>
+		<div id="copySuccess">
+			Link copied to clipboard
+		</div>
+	</body>
+</html>

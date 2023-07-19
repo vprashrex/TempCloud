@@ -1,0 +1,702 @@
+* {
+	position: relative;
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+}
+
+body {
+	margin: 0px;
+	min-height: 100vh;
+	overflow-x: hidden;
+	background-color: #0e0d0c;
+	transition: background-color 300ms;
+}
+body.lightened {
+	background-color: #1e1d1c;
+}
+
+h1, p {
+	margin: 0px;
+}
+
+#spacer {
+	height: 100vh;
+}
+
+#backgroundEffect {
+	display: block;
+	position: absolute;
+	min-width: 100%;
+	height: 100vh;
+	left: 50vw;
+	top: 0px;
+	z-index: 0;
+	transform: translateX(-50%);
+	background-color: transparent;
+}
+
+#table {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+#title {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	position: absolute;
+	left: 2.25rem;
+	top: 2rem;
+	font-family: "Nunito";
+	font-size: 300%;
+	font-weight: 400;
+	padding: 1.25rem 1rem 1rem 1rem;
+	border-radius: 0.5rem;
+	color: #ffffff;
+	background-color: #00000020;
+
+}
+
+#cloud {
+	height: 1em;
+	margin-left: 0.5rem;
+	transform: translateY(0.08em);
+	user-select: none;
+}
+
+#tutorial {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	right: 4rem;
+	top: 47vh;
+	padding: 2rem;
+	background: linear-gradient(135deg, #ff97ff90, #42ffff90);
+	color: #ffffff;
+	border-radius: 1em;
+}
+.titles {
+	font-size: 200%;
+	font-family: "Nunito";
+	margin-bottom: 0.5rem;
+	color: #ffffff;
+}
+#tutorialText {
+	font-size: 125%;
+}
+
+#arrowContainer {
+	display: block;
+	position: absolute;
+	left: 50%;
+	width: 4rem;
+	height: 7.5rem;
+	top: calc(100vh - 0.75rem);
+	transform: translate(-50%, -100%);
+	cursor: pointer;
+}
+#arrow1, #arrow2, #arrow3 {
+	position: absolute;
+	width: 4rem;
+	pointer-events: none;
+}
+#arrow1 {
+	animation: arrow 1800ms linear 0ms infinite;
+}
+#arrow2 {
+	animation: arrow 1800ms linear -600ms infinite;
+}
+#arrow3 {
+	animation: arrow 1800ms linear -1200ms infinite;
+}
+
+@keyframes arrow {
+	0% {
+		transform: translateY(0%);
+		opacity: 0;
+	}
+	25% {
+		transform: translateY(50%);
+		opacity: 0.65;
+	}
+	50% {
+		transform: translateY(100%);
+		opacity: 1;
+	}
+	75% {
+		transform: translateY(150%);
+		opacity: 0.65;
+	}
+	100% {
+		transform: translateY(200%);
+		opacity: 0;
+	}
+}
+
+#upDown {
+	display: flex;
+	width: fit-content;
+	min-width: 28rem;
+	max-width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+	justify-self: center;
+}
+
+#upload, #download, #codes {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	min-width: 24rem;
+	margin: 2rem;
+	padding: 1.5rem 2rem 2rem 2rem;
+	border-radius: 0.75rem;
+}
+#upload {
+	background: linear-gradient(90deg, #ff97ff94, #c0b8ff94);
+}
+#codes {
+	background: linear-gradient(90deg, #c0b8ff94, #85dcff94);
+}
+#download {
+	background: linear-gradient(90deg, #85dcff94, #42ffff94);
+}
+
+#uploadTitle, #downloadTitle, #codesTitle {
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.radios {
+	border-right: 1px solid #ffffff;
+	padding: 0.5625rem 0.625rem 0.5625rem 0.625rem;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: "Nunito";
+	user-select: none;
+	transition: background-color 100ms;
+}
+.radios:last-child {
+	border: none;
+}
+.radios:hover {
+	background-color: #ffffff10;
+}
+.radios.selected {
+	background-color: #42ffff70;
+}
+
+.radioWrap {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-self: center;
+	overflow: hidden;
+	border-radius: 0.5rem;
+	border: 1px solid #ffffff;
+	background-color: #ffffff10;
+}
+
+#uploadBox {
+	width: calc(100% - 6px);
+	margin-top: 1.25rem;
+	height: 8rem;
+	border: 3px solid #42ffff90;
+	border-radius: 0.625rem;
+	background-color: #42ffff50;
+	cursor: pointer;
+}
+
+#uploader {
+	position: fixed;
+	top: -10000px;
+	left: 0px;
+	width: 100%;
+	height: 100vh;
+	z-index: 3;
+	opacity: 0;
+}
+#uploader[triggered="1"] {
+	top: 0px;
+}
+
+#dragFiles {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 110%;
+	width: 100%;
+	font-family: "Nunito";
+	color: #ffffff;
+	text-align: center;
+}
+
+
+#fileStats {
+	min-width: 20rem;
+	margin: 0.5rem 0px 0.75rem 0px;
+}
+.stat {
+	max-width: 24rem;
+	word-wrap: break-word;
+	margin: 0.25rem 0px 0.25rem 0px;
+	font-size: 120%;
+	color: #ffffff;
+}
+
+#downloadButton {
+	display: block;
+	font-family: "Nunito";
+	font-size: 125%;
+	text-align: center;
+	color: #ffffff !important;
+	text-decoration: none;
+	padding: 0.75rem;
+	border: 3px solid #ff97ff90;
+	border-radius: 0.5rem;
+	background-color: #ff97ff50;
+	transition: 120ms;
+}
+#downloadButton.disabled {
+	border: 3px solid #ff97ff70;
+	background-color: #ff97ff30;
+	pointer-events: none;
+	cursor: default;
+}
+
+#codeInput {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	margin: 0.375rem 0px 0.375rem 0px;
+}
+
+.codeLetter {
+	height: 2.25em;
+	width: 2.25em;
+	/*padding: 0.25em; I have no idea what was wrong with this but on August 12 2022 this totally broke */
+	font-size: 160%;
+	border: 2px solid #ffffff90;
+	border-radius: 0.75rem;
+	background-color: #ffffff50;
+	outline: none;
+	font-family: "Nunito";
+	color: #ffffff;
+	text-align: center;
+	transition: 120ms;
+}
+.codeLetter.filled {
+	border-color: #ff97ff80;
+	background-color: #ff97ff50;
+}
+.codeLetter.wrong {
+	border-color: #fa5c5ca0;
+	background-color: #fa5c5c70;
+}
+
+
+
+#sameCode {
+	display: flex;
+	flex-direction: row;
+	margin: 1rem 0px 1rem 0px;
+	justify-content: center;
+	font-size: 110%;
+	font-family: "Nunito";
+	color: #ffffff;
+}
+#groupFilesText {
+	margin-left: 0.375rem;
+}
+#newGroup {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.checkbox {
+	width: 1.125em;
+	height: 1.125em;
+	background-color: #ff97ff50;
+	border: 1px solid #ffffff90;
+	border-radius: 0.25em;
+	box-shadow: 0px 0px 0.5px 0.4px #00000060;
+	transition: 100ms;
+}
+.checkbox:hover {
+	background-color: #ff97ff68;
+}
+
+.checkboxInnerWrap {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 60%;
+	height: 60%;
+	transform: translate(calc(-50% - 2px), calc(-82% - 1px)) rotate(42deg);
+	pointer-events: none;
+}
+
+.checkboxInnerWrap[checked="0"] {
+	display: none;
+}
+
+.checkboxRightTick {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	border-right: solid 2px #84ffff;
+	pointer-events: none;
+}
+
+.checkboxLeftTick {
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	width: 50%;
+	height: 100%;
+	border-bottom: solid 2px #84ffff;
+	pointer-events: none;
+}
+
+
+
+#codesTable {
+	display: flex;
+	flex-direction: column;
+	width: 24rem;
+	height: 14rem;
+	min-height: calc(100% - 3.34rem);
+}
+#nowUploadingWrap {
+	display: flex;
+	flex-grow: 0;
+	flex-direction: column;
+	font-size: 120%;
+	margin-bottom: 0.5rem;
+	word-break: break-all;
+	color: #ffffff;
+}
+#nowUploading {
+	overflow: hidden;
+	height: 1.5rem;
+	margin-bottom: 0.25rem;
+}
+#uploadProgress {
+	width: calc(100% - 4px);
+	height: 1.625rem;
+	border-radius: 0.5rem;
+	border: 2px solid #ffffff;
+	overflow: hidden;
+}
+#uploadProgressInner {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 0%;
+	background-color: #ff97ff98;
+	transition: 200ms;
+}
+#uploadProgressText {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	text-align: center;
+	font-size: 100%;
+}
+
+#table {
+	flex-grow: 1;
+	border: 3px solid #42ffff90;
+	border-radius: 0.625rem;
+	color: #ffffff;
+}
+.wrapCell {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+	transition: 100ms;
+	animation: codeHighlight 400ms ease-out 0ms 2;
+}
+.wrapCell:hover {
+	background-color: #42ffff40;
+}
+.wrapCell:active {
+	background-color: #42ffff50;
+}
+.wrapCell:not(:last-child){
+	border-bottom: 1px solid #ffffff;
+}
+.wrapCell.error {
+	background-color: #fa5c5c70 !important;
+}
+.wrapCell.error:hover {
+	background-color: #fa5c5c80 !important;
+}
+
+@keyframes codeHighlight {
+	0% {
+		background-color: transparent;
+	}
+	50% {
+		background-color: #cc72cc;
+	}
+	100% {
+		background-color: transparent;
+	}
+}
+
+.fileNameCell {
+	width: calc(75% - 1.5rem - 1px);
+	padding: 0.25rem 0.5rem 0.25rem 1rem;
+	border-right: 1px solid #ffffff;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+.codeCell {
+	padding: 0.25rem 0px 0.25rem 0px;
+	width: 25%;
+	text-align: center;
+	height: min-content;
+}
+
+#copySuccess {
+	position: fixed;
+	left: 50%;
+	bottom: 3rem;
+	transform: translate(-50%, calc(100% + 3rem));
+	opacity: 0;
+	padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+	border-radius: 0.5rem;
+	font-size: 125%;
+	font-family: "Nunito";
+	white-space: nowrap;
+	color: #ffffff;
+	background: linear-gradient(135deg, #cc72cc, #0fcccc);
+	transition: 250ms;
+	z-index: 1;
+}
+#copySuccess.shown {
+	opacity: 1;
+}
+#copySuccess.up {
+	transform: translate(-50%, 0px);
+}
+
+#footer {
+	display: flex;
+	width: 100%;
+	flex-direction: column;	
+	justify-content: center;
+	align-items: center;
+	color: #ffffff;
+	padding: 1rem 0px 1rem 0px;
+	background-color: #ffffff10;
+}
+#footer * {
+	font-family: "Nunito";
+	text-align: center;
+}
+#version, #kotol, #donate, #uptimerobot, #mail {
+	color: #cc72cc;
+}
+#jamajcan {
+	color: #0fcccc;
+}
+
+#donate {
+	margin-top: 6px;
+}
+
+#BTCwrap, #XCHwrap {
+	color: #ffffff;
+	font-size: 90%;
+}
+
+#BTC, #XCH {
+	color: #0fcccc;
+}
+
+#warning {
+	position: absolute;
+	max-width: 30rem;
+	left: 60%;
+	top: 2rem;
+	padding: 1rem;
+	background-color: black;
+	color: white;
+	text-align: center;
+	transform: translateX(-50%);
+}
+#warning h2 {
+	margin: 0px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+@media (max-width: 1024px){
+	#backgroundEffect {
+		width: 100vw;
+	}
+
+	#title, #tutorial, #upDown, #warning {
+		position: relative;
+		max-width: 95vw;
+		top: 0px;
+		left: 0px;
+		transform: none;
+	}
+
+	#upDown {
+		margin-top: 1rem;
+	}
+
+	#arrowContainer {
+		display: none;
+		animation: none;
+	}
+
+	#spacer {
+		height: auto !important;
+	}
+
+	#tutorial {
+		min-width: 24rem;
+	}
+
+	#title, #tutorial, #upload, #download, #codes {
+		margin: 1.25rem 2rem 1.25rem 2rem;
+	}
+
+	#tutorial br.notNew {
+		display: none;
+	}
+}
+
+#overlay {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100vh;
+	background-color: #000000d0;
+	transition: 200ms ease-in-out;
+}
+#hackkosice {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: max-content;
+	max-width: calc(90% - 1.5em);
+	max-height: calc(90vh - 1.5em);
+	transform: translate(-50%, -50%);
+	padding: 1.25rem;
+	border: 4px solid #0abdc6;
+	border-radius: 16px;
+	box-shadow: 0px 0px 12px 8px #0abdc680, 0px 0px 36px 8px #0abdc680;
+	background-color: #381220;
+	font-size: 125%;
+	color: white;
+	text-align: center;
+	transition: 200ms ease-in-out;
+}
+#hackkosice.hidden, #overlay.hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+#hackkosice h1 {
+	margin-bottom: 1rem;
+	font-family: "Nunito";
+	font-size: 300%;
+}
+#hackkosice .text {
+	margin: 0em 1em;
+	font-weight: bold;
+	text-align: center;
+	color: #f2f2f5;
+}
+#hackkosice .buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+	margin: 1.5em 0em 0.5em;
+}
+#hackkosice .buttons a {
+	padding: 0.375em 0.75em;
+	border: 3px solid #ffa87f;
+	border-radius: 16px;
+	box-shadow: 0px 0px 6px 4px #ffa87f80, 0px 0px 14px 4px #ffa87f80;
+	font-size: 110%;
+	text-decoration: none;
+}
+
+.neon {
+	color: #fd8bd3;
+	text-shadow:
+	  0 0 7px #fd8bd3c0,
+	  0 0 10px #fd8bd3d0,
+	  0 0 21px #fd8bd3e0,
+	  0 0 42px #fd8bd3f0,
+	  0 0 82px #fd8bd3,
+	  0 0 92px #fd8bd3,
+	  0 0 102px #fd8bd3,
+	  0 0 151px #fd8bd3;
+}
+
+.weak-neon {
+	color: #ffa87f;
+	text-shadow:
+	  0 0 3px #ffa87fc0,
+	  0 0 5px #ffa87fd0,
+	  0 0 10px #ffa87fe0,
+	  0 0 21px #ffa87ff0,
+	  0 0 41px #ffa87f;
+}
+
+
+#hk-bookmark {
+	position: fixed;
+	bottom: 14em;
+	right: 0px;
+	background-color: white;
+	border-width: 4px;
+	border-style: solid;
+	border-radius: 12px 0px 0px 12px;
+	border-right: none;
+	cursor: pointer;
+	animation: border-bookmark 3s ease-in-out infinite;
+}
+@keyframes border-bookmark {
+	0% {
+		border-color: #cc72cc;
+	}
+	50% {
+		border-color: #0fcccc;
+	}
+	100% {
+		border-color: #cc72cc;
+	}
+}
+#hk-bookmark svg {
+	width: 4em;
+	height: 4em;
+}
