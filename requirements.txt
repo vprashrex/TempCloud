@@ -1,0 +1,7 @@
+uvicorn
+jinja2
+fastapi
+python-multipart
+gunicorn
+aiofiles
+asyncio
